@@ -16,6 +16,7 @@ class CreateRepublicsTable extends Migration
         /*Cadastro de uma republica com suas demandas*/
         Schema::create('republics', function (Blueprint $table) {
             $table->id();
+            
             $table->string('nameRepublic')->default();
             $table->string('address')->default();
             $table->integer('bedroom')->default();
@@ -26,9 +27,13 @@ class CreateRepublicsTable extends Migration
             $table->longText('rules')->nullable();
             $table->string('gender')->nullable();
             $table->string('facillity')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
-
+    
+        Schema::table('republics',function (Blueprint $table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+        });
     }
 
     /**

@@ -14,10 +14,11 @@ class CreatCommentstTables extends Migration
     public function up()
     {
         /*Cadastro de um comentário com suas demandas*/
-        Schema::create('commentary', function (Blueprint $table) {
-            $table->bigIncrements('id'); 
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
             $table->longText('commentary')->nullable();
             $table->boolean('like')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreatCommentstTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comments');
     }
 }

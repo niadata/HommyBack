@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocadorsTable extends Migration
+class CreateAltuserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,10 @@ class CreateLocadorsTable extends Migration
      */
     public function up()
     {
-        /*Cadastro de um locador com suas demandas*/
-        Schema::create('locadors', function (Blueprint $table) {
-            $table->id();
-            $table->string('gender')->nullable();
-            $table->string('cpf')->unique();
-            $table->string('telephone')->default();
-            $table->string('deficient')->nullable();
+        Schema::table('users', function(Blueprint $table){
             $table->unsignedBigInteger('republic_id')->nullable();
-            $table->timestamps();
         });
-        Schema::table('locadors', function (Blueprint $table) {
+        Schema::table('users', function(Blueprint $table){
             $table->foreign('republic_id')->references('id')->on('republics')->onDelete('set null');
         });
     }
@@ -35,6 +28,8 @@ class CreateLocadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locadors');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn("republic_id");
+        });
     }
 }

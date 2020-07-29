@@ -27,6 +27,7 @@ Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 
 Route::post('createUser','UserController@createUser');
+Route::post('rulesUser','UserController@rulesUser');
 Route::get('showUser/{id}','UserController@showUser');
 Route::get('listUser','UserController@listUser');
 Route::put('updateUser/{id}','UserController@updateUser');
