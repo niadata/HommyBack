@@ -36,9 +36,3 @@ Route::delete('deleteUser/{id}','UserController@deleteUser');
 Route::post('createComment','CommentController@createComment');
 Route::get('showComment/{id}','CommentController@showComment');
 Route::get('listComment','CommentController@listComment');
-
-Route::post('createLocador','LocadorController@createLocador');
-Route::get('showLocador/{id}','LocadorController@showLocador');
-Route::get('listLocador','LocadorController@listLocador');
-Route::put('updateLocador/{id}','LocadorController@updateLocador');
-Route::delete('deleteLocador/{id}','LocadorController@deleteLocador');
