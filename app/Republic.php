@@ -9,30 +9,18 @@ use User;
 
 class Republic extends Model
 {
+     public function users(){
+        return $this->belongsToMany('App\User');
+    }
 
     public function user(){
         return $this->belongsTo('App\User');
     }
-    // public function removeUsuario(){
-    //     $this->user_id = NULL;
-    //     $this->save();
-    // }
-    // public function userLocatario(){
-    //     return $this->hasOne('App\User');
-    // }
+    public function republicComment(){
+        return $this->hasMany('App\Comment');
+    }
         
-    // public function republicFavorite(){
-    //     return $this->belongsToMany('App\User');
-    // }
-    // public function republicComment(){
-    //     return $this->belongsToMany('App\User');
-    // }
-
-
-
-    // retorna usuario
-    // mostrar proprietario
-    // mostrar comentário
-       
-
-}
+        
+        
+ }
+ 
