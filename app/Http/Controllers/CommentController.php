@@ -32,21 +32,23 @@ class CommentController extends Controller
     	Comment::destroy($id);
     	return response()->json(['Produto deletado']);
     }
+    public function addComment($id, $comment_id){
+        /*Função que adiciona um comentário pelo id e especifico */
+        $user = User::findOrFail($id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->user_id = $id;
+        $comment->save();
+        return response()->json($comment);
+    }
+
+    public function removeComment($id, $comment_id){
+        /*Função que remove um comentário pelo id e especifico */
+        $user = User::findOrFail($id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->user_id = Null;
+        $comment->save();
+        return response()->json($comment);
+    }
 }
 
 
-// public function addComment($id, $comment_id){
-//     $user = User::findOrFail($id);
-//     $comment = Comment::findOrFail($comment_id);
-//     $comment->user_id = $id;
-//     $comment->save();
-//     return response()->json($comment);
-// }
-
-// public function removeComment($id, $comment_id){
-//     $user = User::findOrFail($id);
-//     $comment = Comment::findOrFail($comment_id);
-//     $comment->user_id = Null;
-//     $comment->save();
-//     return response()->json($comment);
-// }
