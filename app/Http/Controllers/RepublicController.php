@@ -89,32 +89,22 @@ class RepublicController extends Controller
         Republic::destroy($id);
         return reponse()->json(['Produto Deletado']);
     }
+    public function addRepublic($id, $republic_id){
+        /*Função que permite adicionar a uma republica pelo id*/
+        $user = User::findOrFail($id);
+        $republic = Republic::findOrFail($republic_id);
+        $republic->user_id = $id;
+        $republic->save();
+        return response()->json($republic);
+    }
+
+    public function removeRepublic($id, $republic_id){
+        /*Função que permite remover a uma republica pelo id*/
+        $user = User::findOrFail($id);
+        $republic = Republic::findOrFail($republic_id);
+        $republic->user_id = Null;
+        $republic->save();
+        return response()->json($republic);
+    }
 }
 
-// public function addRepublic($id, $republic_id){
-//     $user = User::findOrFail($id);
-//     $republic = Republic::findOrFail($republic_id);
-//     $republic->user_id = $id;
-//     $republic->save();
-//     return response()->json($republic);
-// }
-
-// public function removeRepublic($id, $republic_id){
-//     $user = User::findOrFail($id);
-//     $republic = Republic::findOrFail($republic_id);
-//     $republic->user_id = Null;
-//     $republic->save();
-//     return response()->json($republic);
-// }
-
-// public function locatarios($id){
-//     $republic = Republic::findOrFail($id);
-//     $locatarios = $republic->userLocatario->get();
-//     return response()->json($locatarios);
-// }
-
-// public function mostrarProprietario($id){
-//     $republic = Republic::findOrFail($id);
-//     $user = User::findOrFail($republic->user_id);
-//     return response()->json($user);
-// }
