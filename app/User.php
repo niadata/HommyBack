@@ -1,15 +1,23 @@
 <?php
 
 namespace App;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens; 
 
+    public function republics(){
+        return $this->hasMany('App\Republic');
+    }
+
+    public function republic(){
+        return $this->hasOne('App\Republic');
+    }
     /**
      * The attributes that are mass assignable.
      *
