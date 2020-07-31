@@ -57,4 +57,6 @@ class UserController extends Controller
         Republic::destroy($id);
         return reponse()->json(['usuario Deletado']);
     }
+    
+   
 }

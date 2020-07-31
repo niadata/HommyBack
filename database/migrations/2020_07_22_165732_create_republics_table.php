@@ -27,6 +27,7 @@ class CreateRepublicsTable extends Migration
             $table->string('gender')->nullable();
             $table->string('facillity')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('republics', function (Blueprint $table) {

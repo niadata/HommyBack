@@ -19,7 +19,26 @@ class UserTabelSeeder extends Seeder
             $comments->save();
             $user->republic()->save($republic);
             $republic->users()->attach($user);
+            $user->Comment()->saveMany($comments);
         });
 
     }
 }
+
+
+
+
+
+
+// public function locatarios($id){
+//     $republic = Republic::findOrFail($id);
+//     $locatarios = $republic->userLocatario->get();
+//     return response()->json($locatarios);
+// }
+
+// public function mostrarProprietario($id){
+//     $republic = Republic::findOrFail($id);
+//     $user = User::findOrFail($republic->user_id);
+//     return response()->json($user);
+// }
+

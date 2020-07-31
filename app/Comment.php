@@ -10,4 +10,5 @@ class Comment extends Model
     public function comment(){
         return $this->belongsTo('App\Republic');
     }
+
 }
