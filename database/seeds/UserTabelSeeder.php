@@ -19,6 +19,7 @@ class UserTabelSeeder extends Seeder
             $comments->save();
             $user->republic()->save($republic);
             $republic->users()->attach($user);
+            $user->Comment()->saveMany($comments);
         });
 
     }
