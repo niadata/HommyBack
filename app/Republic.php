@@ -18,7 +18,7 @@ class Republic extends Model
     public function comments(){
         return $this->hasMany('App\Comment');
     }
-    public function creatRepublic(RepublicRequest $request){
+    public function creatRepublic(Request $request){
         $this->nameRepublic = $request->nameRepublic;
         $this->address = $request->address;
         $this->bedroom = $request->bedroom;

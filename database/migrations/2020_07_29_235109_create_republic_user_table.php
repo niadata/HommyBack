@@ -13,15 +13,15 @@ class CreateRepublicUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('republic_user', function (Blueprint $table) {
+        Schema::create('republics_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('republic_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('republics_id');
+            $table->unsignedBigInteger('users_id');
             $table->timestamps();
         });
-        Schema::table('republic_user', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('republic_id')->references('id')->on('republics')->onDelete('cascade');
+        Schema::table('republics_user', function (Blueprint $table) {
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('republics_id')->references('id')->on('republics')->onDelete('cascade');
         });
     }
 

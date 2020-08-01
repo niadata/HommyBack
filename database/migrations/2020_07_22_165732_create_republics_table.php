@@ -26,12 +26,12 @@ class CreateRepublicsTable extends Migration
             $table->longText('rules')->nullable();
             $table->string('gender')->nullable();
             $table->string('facillity')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('users_id');
             $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('republics', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
         });
 
     }
@@ -43,6 +43,6 @@ class CreateRepublicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('republics');
+        Schema::dropIfExists('republic');
     }
 }

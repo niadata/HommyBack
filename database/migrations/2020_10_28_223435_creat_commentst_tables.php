@@ -18,11 +18,11 @@ class CreatCommentstTables extends Migration
             $table->bigIncrements('id'); 
             $table->longText('commentary')->nullable();
             $table->boolean('like')->nullable();
-            $table->unsignedBigInteger('republic_id')->nullable();
+            $table->unsignedBigInteger('republics_id')->nullable();
             $table->timestamps();
         });
         Schema::table('commentary', function (Blueprint $table) {
-            $table->foreign('republic_id')->references('id')->on('republics')->onDelete('set null');
+            $table->foreign('republics_id')->references('id')->on('republics')->onDelete('set null');
         });
     }
 
