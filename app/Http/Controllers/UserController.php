@@ -10,11 +10,7 @@ class UserController extends Controller
     public function createUser(Request $request){
         /*Função que cria um usuario*/
         $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->email_verified_at = $request->email_verified_at;
-        $user->password = $request->password;
-        $user->save();
+        $request->$createUser($request);
         return response()->json($user);
     }
     public function showUser($id){

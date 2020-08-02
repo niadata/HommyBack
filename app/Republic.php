@@ -32,4 +32,15 @@ class Republic extends Model
         $this->save();
     }
     
+    public function searchRepublic(Request $request) { 
+        $republic = Republic::query(); // Gera um objeto do tipo Builder    like()
+        if ($request->address)
+            $republic->where('address','LIKE','%'.$request->address.'%');
+        if ($request->nameRepublic)
+            $republic->where('nameRepublic','LIKE','%'.$request->nameRepublic.'%');
+        if ($request->bedroom)
+            $republic->where('bedroom','<>','%'.$request->bedroom.'%');
+        $search = $republic->get();
+        return response()->json($search);
+    }
 }

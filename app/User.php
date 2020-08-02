@@ -21,12 +21,14 @@ class User extends Authenticatable
         return $this->hasOne('App\Republic');
     }
     public function createUser($request){
-        //Modifica os dados localmente
-        $this->name =$request->name;
+        //Modifica os dados 
+        //Modifica os dados no BD
+        $this->name = $request->name;
         $this->password = $request->password;
         $this->email = $request->email;
-        //Modifica os dados no BD
-    $this->save();
+        $this->email_verified_at = $request->email_verified_at;
+        $this->password = $request->password;
+        $this->save();
     }
     
     /**

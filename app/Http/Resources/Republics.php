@@ -14,6 +14,17 @@ class Republics extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+        'nameRepublic' => $this->nameRepublic,
+        'address' => $this->address,
+        'bedroom' => $this->bedroom,
+        'telephoneRepublic' => $this->telephoneRepublic,
+        'description' => $this->description,
+        'acessibility' => $this->acessibility,
+        'bathroom' => bathroomResource::collection($this->bathroom),
+        'rules' => $this->rules,
+        'gender' => $this->gender,
+        'facillity' => $this->facillity,
+        ];
     }
 }

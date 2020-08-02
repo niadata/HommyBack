@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources;
 use App\Republic;
+use App\Http\Resources\Republics as RepublicResource;
 
 class RepublicController extends Controller
 {
@@ -89,16 +90,23 @@ class RepublicController extends Controller
         if ($request->nameRepublic)
             $republic->where('nameRepublic','LIKE','%'.$request->nameRepublic.'%');
         if ($request->bedroom)
-            $republic->where('bedroom','<>','%'.$request->bedroom.'%');
-        $search = $republic->get();
-        return response()->json($search);
+            $republic->Republic::whereHas('bedroom', function(Republic $query){
+                $query->where('bedroom', '>=','5');
+            });
+        $paginator = Republic::paginate(8);
+        $republic = RepublicResource::collection($paginator);
+        $last = $paginator->lastPage();
+       
+        return response()->json([$paginator,$last]);
     }
-    
+
     
 }
 
 
 
+// whereHas('bedroom','<>','%'.$request->bedroom.'%');
+//         $search = $republic->get();
 // public function show($id){
     //     // filtra os nomesd das republicas e os seus enderessos
     //     $republic = Republic::where('id',$id)->first();
