@@ -99,25 +99,10 @@ class RepublicController extends Controller
        
         return response()->json([$paginator,$last]);
     }
-
     
 }
 
+// teste que tá ruim
 
 
-// whereHas('bedroom','<>','%'.$request->bedroom.'%');
-//         $search = $republic->get();
-// public function show($id){
-    //     // filtra os nomesd das republicas e os seus enderessos
-    //     $republic = Republic::where('id',$id)->first();
-    //     if($republic){
-    //         echo "<h1> Dados usuario </h1>";
-    //         echo "<p>Nome: {$republic->nameRepublic} E-mail:{$republic->address}  Telefone:{$republic->telephoneRepublic} </p>";
-    //     }
-    // }
 
-    // public function store(Request $request){
-    //     $user = new App\User;
-    //     $user->createUser($request);
-    //     return response()->success($user);
-    // }
