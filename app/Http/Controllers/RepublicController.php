@@ -5,13 +5,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources;
 use App\Republic;
 use App\Http\Resources\Republics as RepublicResource;
+use Illuminate\Support\Facades\Storage;
 
 class RepublicController extends Controller
 {
     public function createRepublic(Request $request){
         /*Função que cria uma republica*/
         $republic = new Republic;
-        $request->$createRepublic($request);
+        $republic->createRepublic($request);
         return response()->json($republic);
     }
     public function showRepublic($id){

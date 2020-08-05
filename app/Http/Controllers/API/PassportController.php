@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use DB;
+use App\Notifications\newNotification;
 
 class PassportController extends Controller
 {
@@ -24,7 +25,8 @@ class PassportController extends Controller
 
         $newUser = new User;
         $newUser->name = $request->name;
-        $newUser->email = $request->email;
+        $newUser->email = $request->email;;
+        $user->notify(new newNotification());
         $newUser->password = bcrypt($request->password);
         $newUser->save();
         $success['token']=$newUser->createToken('MyApp')->accessToken;

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class CreateRepublicsTable extends Migration
 {
@@ -26,6 +27,7 @@ class CreateRepublicsTable extends Migration
             $table->longText('rules')->nullable();
             $table->string('gender')->nullable();
             $table->string('facillity')->nullable();
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('users_id');
             $table->softDeletes();
             $table->timestamps();

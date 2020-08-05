@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 Use Illuminate\Database\Eloquent\SoftDeletes;
+use App\notification\Hommy;
 
 class User extends Authenticatable
 {

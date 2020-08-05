@@ -1,16 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\CommentRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Foudation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+
 use App\User;
+use App\Republic;
+Use App\Comment;
 
 class UserController extends Controller
 {
     public function createUser(Request $request){
         /*Função que cria um usuario*/
         $user = new User;
-        $request->$createUser($request);
+        $user->createUser($request);
         return response()->json($user);
     }
     public function showUser($id){
@@ -52,6 +59,9 @@ class UserController extends Controller
         /*Função que permite um usuário ser deletado*/
         Republic::destroy($id);
         return reponse()->json(['usuario Deletado']);
+    }
+    public function construct(){
+        $this->middleware('delete');
     }
     
    

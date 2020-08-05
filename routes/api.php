@@ -24,7 +24,7 @@ Route::post('createRepublic','RepublicController@createRepublic');
 Route::get('showRepublic/{id}','RepublicController@showRepublic');
 Route::get('listRepublic','RepublicController@listRepublic');
 Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
-Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
+// Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 Route::get('returnDelete','RepublicController@returnDelete');
 Route::get('searchRepublic','RepublicController@searchRepublic');
 
@@ -44,5 +44,6 @@ Route::post('login','API\PassportController@login');
 Route::group(['middleware'=>'auth:api'], function(){
     Route::get('logout','API\PassportController@logout');
     Route::post('getDetails','API\PassportController@getDetails');
+    Route::delete('deletRepublic/{id}', 'RepublicController@deleteRepublic')->middleware('delete');
 });
 
